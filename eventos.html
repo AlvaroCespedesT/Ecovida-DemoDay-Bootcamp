@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body>
+    <header class="absolute inset-x-0  z-10">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between h-28 lg:px-6" aria-label="Global">
+          <div class="flex">
+            <a href="/mapa" class="-m-1.5 p-1.5">
+              <br>
+              <br>
+              <img class="h-80 w-80" src="/static/limitless__2_-removebg-preview.png" alt="">
+            </a>
+          </div>
+          <div class="flex">
+            <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+        
+              
+            </button>
+    
+          </div>
+          <div class="hidden lg:flex lg:gap-x-20">
+            <a href="/conocenos" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Conócenos</a>
+            <a href="/actividades" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Actividades</a>
+            <a href="/recompensas" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Recompensas</a>
+            <a href="/foro_comunitario" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Foro comunitario</a>
+          </div>
+          
+        </nav>
+  </header>
+
+ <!-- CARTA1    -->
+ {% for marker in markers %}
+<main class="pt-32">
+<div class=" w-1/2 mx-auto">
+
+<a href="/mapa" class="flex mx-auto flex-col  items-center bg-[#C0E0AD] border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl  dark:border-gray-700">
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src='/static/limitless__2_-removebg-preview_1.png' alt="">
+    
+    
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600 dark:text-gray-600">{{marker.desafio}}</h5>
+        
+        <div class="flex gap-4  mb-1">
+  <span class="text-sm font-small text-[blue-700] dark:text-white">{{marker.fecha_inicio}} hasta {{marker.fecha_termino}}</span>
+  <span class="text-sm font-medium text-green-800 dark:text-white">45%</span>
+</div>
+<div class="w-full bg-green-300 rounded-full h-2.5 dark:bg-gray-700">
+  <div class="bg-green-800 h-2.5 rounded-full" style="width: 95%"></div>
+</div>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{marker.descripcion}}</p>
+    </div>
+</a>
+    
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+</main>
+{%endfor%}
+</body>

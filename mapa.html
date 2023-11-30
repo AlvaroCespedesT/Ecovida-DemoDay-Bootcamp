@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cf587602d5c36c108b12c3ce25377e72 {
+                    position: relative;
+                    width: 98.0%;
+                    height: 80.0%;
+                    left: 1.0%;
+                    top: 10.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        <link rel="stylesheet" href="/static/main.css">
+        
+</head>
+<body>
+    
+    <header>
+        <a href="/mapa"><img src="/static/limitless__2_-removebg-preview_1.png" alt="Ecovida Logo" /></a>
+        <nav>
+          <ul>
+            <li><a href="/conocenos" class= "text-2xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Conócenos</a></li>
+            <li><a href="/actividades" class= "text-2xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Actividades</a></li>
+            <li><a href="/recompensas" class= "text-2xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Recompensas</a></li>
+            <li><a href="/foro_comunitario" class= "text-2xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Foro comunitario</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="boton_evento"><a href="/eventos"> Ir a eventos</a></div>
+            
+            <div class="folium-map" id="map_cf587602d5c36c108b12c3ce25377e72" ></div>
+            
+        
+</body>
+<script>
+    
+    // CREACION DEL MAPA CON LAS CONFIGURACIONES DEL TAMAÑO Y CENTRO
+            var map_cf587602d5c36c108b12c3ce25377e72 = L.map(
+                "map_cf587602d5c36c108b12c3ce25377e72",
+                {
+                    center: [-25.286421051014038, -57.56158410478284],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_738c32361734a8aa6276ec8534c60ae3 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+                tile_layer_738c32361734a8aa6276ec8534c60ae3.addTo(map_cf587602d5c36c108b12c3ce25377e72);
+
+    
+var custom_icon_b6ed49016af9f01c9f12e027c47bb0b9 = L.icon({"iconAnchor": [38, 60], "iconSize": [80, 80], "iconUrl": '/static/icono.png', "popupAnchor": [0, -50]});
+
+    // INICIO DE LA FUNCION PARA AGREGAR MARCADORES EN EL MAPA
+    function newMarker(e){
+        var lat = e.latlng.lat.toFixed(4),
+        lng = e.latlng.lng.toFixed(4);
+        
+        var new_mark = L.marker(e.latlng, {icon: custom_icon_b6ed49016af9f01c9f12e027c47bb0b9}).setLatLng(e.latlng).addTo(map_cf587602d5c36c108b12c3ce25377e72);
+        new_mark.dragging.enable();
+        new_mark.on('dblclick', function(e){ map_cf587602d5c36c108b12c3ce25377e72.removeLayer(e.target)})
+        
+    // Modificar el contenido del popup para incluir un formulario
+     var popupContent = `
+     <form id="marker-form" class="max-w-lg mx-auto">
+        <div class="mb-6">
+            <label for="eventName" class="block mb-2 text-sm text-green-800 font-semibold font-medium custom-text">Nombre del Evento</label>
+            <input type="text" id="info" name="desafio" class="w-full p-2 border  border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="mb-6">
+            <label for="eventDescription" class="block mb-2 font-semibold text-sm text-green-800 font-medium custom-text">Descripción del Evento</label>
+            <textarea id="info1" name="descripcion" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4"></textarea>
+        </div>
+        <div class="mb-6">
+            <label for="startDate" class="block mb-2 text-sm text-green-800 font-semibold font-medium custom-text">Inicio del Evento</label>
+            <input type="date" id="info2" name="fecha_inicio" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="mb-6">
+            <label for="endDate" class="block mb-2 text-sm text-green-800 font-medium custom-text">Fin del Evento</label>
+            <input type="date" id="info3" name="fecha_termino" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="button" class="w-full p-3 bg-green-700 text-white rounded-md hover:bg-green-800" onclick="saveMarkerData(${lat}, ${lng})">Enviar</button>
+    </form>
+`;
+
+
+    new_mark.bindPopup(popupContent);
+
+};
+     // Función para manejar el guardado de datos del marcador
+     function saveMarkerData(lat, lng) {
+        var desafio = document.getElementById('info').value;
+        var descripcion = document.getElementById('info1').value;
+        var fecha_inicio = document.getElementsByName('fecha_inicio')[0].value;
+        var fecha_termino = document.getElementsByName('fecha_termino')[0].value;
+
+        $.ajax({
+            url: '/save_marker',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ lat: lat, lng: lng, desafio: desafio, descripcion: descripcion, fecha_inicio: fecha_inicio, fecha_termino: fecha_termino }),
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+    });
+}
+                
+// FUNCION QUE CONECTA AL SERVIDOR PARA CARGA DE INFO DE LA DB A LA VISTA
+    function loadMarkers() {
+    $.ajax({
+        url: '/get_markers',
+        method: 'GET',
+        success: function (markers) {
+            markers.forEach(function (marker) {
+                L.marker([marker.latitude, marker.longitude], {icon: custom_icon_b6ed49016af9f01c9f12e027c47bb0b9}).addTo(map_cf587602d5c36c108b12c3ce25377e72);
+            });
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
+
+// LLAMAR A LOADMARKERS CUANDO LA PAGINA SE CARGA
+$(document).ready(function() {
+    loadMarkers();
+});
+                    
+// CREACION DEL MAPA AL DARLE CLICK A LA PANTALLA
+map_cf587602d5c36c108b12c3ce25377e72.on('click', newMarker);
+            
+</script>
+</html>

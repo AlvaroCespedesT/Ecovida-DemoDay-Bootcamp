@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body class="text-left font-['Playfair_Display'] text-xl text-lime-700">
+    <div>
+        <div class=" lg:grid-cols-12 grid grid-cols-1">
+          <div class="bg-lime-50 lg:col-span-4 xl:p-12">
+            <div class="items-center justify-start flex h-24"> <img src="/static/limitless__2_-removebg-preview.png" alt=""> </div>
+            <br>
+            <p class="text-2xl mt-6 mb-4 text-left text-black font-bold font-semibold text-green-950 ">Iniciar Sesión</p>
+
+          <form action="{{ url_for('index') }}" method="post">
+            <div>
+            
+              <div class="block">
+                <p class="text-lg font-semibold text-base">Correo Electrónico</p>
+                <input type="email" name='correo_usuario' class="border-2 hover:border-amber-200 w-full rounded-md">
+              </div>
+              <div class="block">
+                <p class="text-lg font-semibold text-base ">Contraseña</p>
+                <input type="password" name='password_usuario' placeholder="••••••••" class="border-2 hover:border-amber-200 w-full rounded-md
+                    pr-3 pb-2 pl-3">
+              </div>
+              {% if login_fallido %}
+                <p>Usuario o contraseña incorrecto</p>
+              {% endif %}
+              <br>
+
+              <div class="mt-4 mr-0 mb-0 ml-0 items-center justify-between flex">
+                <div class="items-center flex">
+                  <input type="checkbox">
+                  <p class="font-semibold w-20 text-xs mr-4 ml-2 text-black block cursor-pointer">Recrodarme</p>
+                </div>
+                <button class="hover:bg-lime-600 rounded-md text-xl pt-3 pr-3 pb-3 pl-3 bg-lime-400 font-semibold text-white
+                w-full text-center">Iniciar</button>
+              </div>
+            <br>
+            </div>
+          </form>
+          <br>
+            <div>
+              <a class=" text-sm text-lime-950 hover:text-[#B5D503]">Aun no tienes una cuenta?</a>
+              <a class="text-sm inline text-[#0AD13E] hover:text-[#A9CD38]">Crear cuenta</a>
+              <a class="text-sm mt-2 block text-[#DEDA05] hover:text-lime-900">Olvidaste tu contrasena?</a>
+              <a class="text-xs font-semibold text-lg mt-3 block hover:text-lime-950 text-[#ADB029]">Privacy & Terms</a>
+            </div>
+          </div>
+          <div class="lg:col-span-8">
+            <img src="/static/duotone_5.png" class="object-cover w-300" style="height: 100vh;">
+          </div>
+        </div>
+      </div>
+</body>

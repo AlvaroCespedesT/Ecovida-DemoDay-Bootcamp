@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>actividades</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<div class="bg-white">
+  <!-- Header -->
+  <header class="absolute inset-x-0  z-10">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between h-28 lg:px-6" aria-label="Global">
+      <div class="flex">
+        <a href="#" class="-m-1.5 p-1.5">
+          <br>
+          <br>
+          <img class="h-80 w-80" src="/static/limitless__2_-removebg-preview.png"  alt="">
+        </a>
+      </div>
+      <div class="flex">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+
+        </button>
+
+      </div>
+      <div class="hidden lg:flex lg:gap-x-20">
+        <a href="/conocenos" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Conócenos</a>
+        <a href="/actividades" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Actividades</a>
+        <a href="/recompensas" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Recompensas</a>
+        <a href="/foro_comunitario" class="text-xl font-semibold leading-6 text-gray-900 hover:text-[#B8AE00]">Foro comunitario</a>
+      </div>
+      
+    </nav>
+  </header>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+<body>
+  
+  {% for marker in markers %}
+  <div>
+      <div class="px-4 sm:px-0">
+        <h3 class="text-base font-semibold leading-7 text-gray-900">Actividad</h3>
+        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Evento de reciclaje en zona</p>
+      </div>
+      <div class="mt-6 border-t border-gray-100">
+        <dl class="divide-y divide-gray-100">
+          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Desafio</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{marker.desafio}}</dd>
+          </div>
+          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Descripción</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{marker.descripcion}}</dd>
+          </div>
+          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Fecha de inicio</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{marker.fecha_inicio}} </dd>
+          </div>
+          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Fecha de termino</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{fecha_termino}}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  {%endfor%}
+
+</body>
+  </html>

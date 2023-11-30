@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/crete-round?styles=15663" rel="stylesheet">
+                
+  </head>
+
+<body class="font-['Playfair_Display'] text-xl ">
+    <div>
+        <div class=" lg:grid-cols-12 grid grid-cols-1 ">
+          <div class="lg:col-span-4 xl:p-8 ">
+            <div class="items-center justify-evenly flex h-24"> <img class="" src="/static/logo.png"></div>
+            <p class= "text-2xl text-left
+            text-black font-bold text-green-950 mt-12">Crear Cuenta</p>
+
+        <form action="{{ url_for('crear_cuenta') }}" method="post">
+
+            <div>
+                <div class="block">
+                    <p class="text-lg text=[#889E28] text-lime-600 font-semibold text-base">Nombre</p>
+                    <input type="text" name='nombre_usuario' class="pl-3 border-2 hover:border-amber-200 w-full rounded-md">
+                  </div>
+
+              <div class="block">
+                <p class="text-lg text=[#889E28] text-lime-600 font-semibold text-base">Correo Electronico</p>
+                <input type="email" name='correo_usuario' class="pl-3 border-2 hover:border-amber-200 w-full rounded-md">
+              </div>
+
+              <div class="block">
+                <p class="text-lg font-semibold text-lime-600 text-base ">Contraseña</p>
+                <input type="password" name='password_usuario' placeholder="••••••••" class= "pl-3 border-2 hover:border-amber-200 w-full rounded-md
+                pr-3 pb-2 pl-3">
+              </div>
+
+              <div class="block">
+                <p class="text-base text-lime-600 text-lg font-semibold">Ciudad</p>
+                <select aria-placeholder="Seleccionar" name='ciudad_usuario' id="ciudad_usuario" class="border-2 hover:border-amber-200 w-full rounded-md pr-3 pb-2 pl-3">
+                  <option class="text-sm block" value=></option>
+                  <option class="text-sm" value="Asuncion">Asuncion</option>
+                  <option class="text-sm" value="Fernando">Fernando de la Mora</option>
+                  <option class="text-sm" value="Luque">Luque</option>
+                  <option class="text-sm" value="Lambare">Lambaré</option>
+                  <option class="text-sm" value="Capiatá">Capiatá</option>
+                  <option class="text-sm" value="san_lorenzo">San Lorenzo</option>
+                  <option class="text-sm" value="Mariano R. Alonso">Mariano R. Alonso</option>
+                  <option class="text-sm" value="Ñemby">Ñemby</option>
+                </select>
+              </div>
+              <br>
+                <div class="mt-3 items-center justify-between flex">
+                <div class="items-center flex">
+                  <input type="checkbox">
+                  <p class="font-semibold w-20 text-xs mr-4 ml-2 text-black block cursor-pointer">RECORDARME</p>
+                </div>
+                </div>
+                <br>
+                 <button class="hover:bg-lime-600 rounded-md text-xl pt-3 pr-3 pb-3 pl-3 bg-lime-400 font-semibold text-white
+                 w-full text-center">Crear</button>
+        </form>
+                 <div class="space-y-2">
+                   <a class="text-xs  text-[#84AC0F] hover:text-[#A9CD38]">Privacy & Terms</a>
+                 </div>
+
+            </div>
+          </div>
+          <div class="lg:col-span-8 h-screen">
+            <img src="/static/duotone_2.png" class="object-cover w-300 h-screen">
+          </div>
+        </div>
+      </div>
+</body>  
+</html>
